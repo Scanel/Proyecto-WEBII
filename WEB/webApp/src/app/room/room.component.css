@@ -1,0 +1,35 @@
+:host{
+    display: block;
+    background-color: black;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.wrapper-room{
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.contenedor-avatar{
+    display: flex;
+    flex-wrap: wrap;
+    background: url("../../assets/Salon/Suelo2.png");
+    background-repeat: no-repeat;
+    width: 70%;
+    background-color: blue;
+    padding: 50px;
+}
+.contenedor-video{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    background-color: white;
+    background-size: cover;
+    overflow-y: scroll;
+    width: 30%;
+}
+app-video-player{
+    padding: 0.5rem;
+}

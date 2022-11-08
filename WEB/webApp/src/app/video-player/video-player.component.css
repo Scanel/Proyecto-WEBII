@@ -1,0 +1,24 @@
+video{
+    width: 100%;
+    /* height: 200px; */
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.wrapper-video{
+    position: relative;
+}
+
+.label-name{
+    position: absolute;
+    bottom: 0;
+    margin: .55rem, .15rem;
+    background-color: rgb(19, 19, 19);
+    padding: .25rem;
+    color: white;
+}
+
+.message{
+    position: absolute;
+    z-index: 10;
+}

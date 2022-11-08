@@ -1,0 +1,13 @@
+<div class="wrapper-room">
+    <div class="contenedor-avatar">
+        <app-avatar></app-avatar>
+        <app-avatar></app-avatar>
+        <app-avatar></app-avatar>
+        <app-avatar></app-avatar>
+        <app-avatar></app-avatar>
+    </div>
+    <div class="contenedor-video">
+        <app-video-player [stream]="user" *ngFor="let user of listUser"></app-video-player>
+    </div>
+</div>
+<app-menu-bottom [stream]="listUser[0]"></app-menu-bottom>

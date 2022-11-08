@@ -1,0 +1,15 @@
+<div class="menu">
+    <div class="item">
+        <i class="fa-sharp fa-solid fa-microphone fa-3x" *ngIf="audioOn" (click)="SetAudio()"></i>
+        <i class="fa-solid fa-microphone-slash fa-3x" *ngIf="!audioOn" (click)="SetAudio()"></i>
+    </div>
+    <div class="item">
+        <i class="fa-solid fa-video fa-3x" *ngIf="videoOn" (click)="SetVideo()"></i>
+        <i class="fa-solid fa-video-slash fa-3x" *ngIf="!videoOn" (click)="SetVideo()"></i>
+    </div>
+    <div class="item">
+        <i class="fa-solid fa-phone-slash fa-3x" (click)="Disconnect()"></i>
+    </div>
+</div>
+
+<!-- <i class="fa-sharp fa-solid fa-microphone-slash"></i> -->

@@ -1,0 +1,16 @@
+.contenido{
+    display: flex;
+    background-color: gray;
+}
+.Avatar{
+    position: relative;
+    width: 128px;
+    height: 256px;
+    background-color: red;
+    margin: 10px;
+}
+.Avatar img{
+    position: absolute;
+    width: 128px;
+    height: 256px;
+}
