@@ -12,8 +12,9 @@ export class PeerService {
 
   StartPeer = () => {
     this.peer = new Peer('', {
-      host: 'localhost',
-      port: 3001
+      host: 'peerjs-server.herokuapp.com',
+      port: 443,
+      secure: true
     })
   }
 

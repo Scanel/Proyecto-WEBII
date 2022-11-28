@@ -22,7 +22,7 @@ import { UnirseRoomComponent } from './unirse-room/unirse-room.component';
 import { ChatComponent } from './chat/chat.component';
 import { CuentaComponent } from './cuenta/cuenta.component';
 
-const config: SocketIoConfig = {url: 'http://localhost:3002', options: {withCredentials: false}};
+const config: SocketIoConfig = {url: 'https://my-virtualchat.herokuapp.com/', options: {withCredentials: false}};
 
 @NgModule({
   declarations: [

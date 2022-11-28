@@ -8,7 +8,7 @@ import { ResultadoRoomUser, RoomUser } from '../modelos/roomuser.model';
 })
 export class RoomuserService {
 
-  urlBase: string = "http://localhost:3000/";
+  urlBase: string = "https://api-videochat402.herokuapp.com/";
 
   constructor(private http: HttpClient) { }
 
