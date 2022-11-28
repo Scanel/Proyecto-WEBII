@@ -5,7 +5,7 @@ import { Socket } from 'ngx-socket-io';
   providedIn: 'root'
 })
 export class WebSocketService {
-  events = ['new-user', 'bye-user'];
+  events = ['new-user', 'bye-user', 'chat-user', 'avatar-user'];
   public cbEvent: EventEmitter<any> = new EventEmitter<any>();
   constructor(private socket: Socket) { 
     this.listener();
@@ -22,5 +22,13 @@ export class WebSocketService {
 
   joinRoom = (data: any) =>{
     this.socket.emit('join', data);
+  }
+
+  SendMessage = (data: any) =>{
+    this.socket.emit('chat', data);
+  }
+
+  SendAvatar = (data:any) => {
+    this.socket.emit('avatar', data);
   }
 }

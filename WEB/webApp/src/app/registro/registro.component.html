@@ -1,0 +1,44 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <img src="../../assets/img/registrarse.png" alt="">
+    <h1 class="title">¡Únete ahora!</h1>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <!-- <p>Necesitarás usar este email para conectarte a la plataforma. Por favor, utiliza un email que sea válido.</p> -->
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [formControl]="myForm.controls['email']">
+    </div>
+    <div class="mb-3">
+      <label for="txtPassword1" class="form-label">Contraseña</label>
+      <!-- <p>Usa al menos 6 caracteres. Incluye al menos una letra y un número o un caracter especial.</p> -->
+      <input required type="password" class="form-control" id="txtPassword1" name="password1" [formControl]="myForm.controls['password1']">
+    </div>
+    <div class="mb-3">
+        <label for="txtPassword2" class="form-label">Repite contraseña</label>
+        <input required type="password" class="form-control" id="txtPassword2" name="password2" [formControl]="myForm.controls['password2']">
+    </div>
+    <div class="mb-3">
+        <label for="txtNombre" class="form-label">Nombre</label>
+        <input required type="text" class="form-control" id="txtNombre" name="nombre" [formControl]="myForm.controls['nombre']">
+    </div>
+    <div class="mb-3">
+        <label for="txtApellido1" class="form-label">Apellido 1</label>
+        <input required type="text" class="form-control" id="txtApellido1" name="apellido1" [formControl]="myForm.controls['apellido1']">
+    </div>
+    <div class="mb-3">
+        <label for="txtApellido2" class="form-label">Apellido 2</label>
+        <input type="text" class="form-control" id="txtApellido2" name="apellido2" [formControl]="myForm.controls['apellido2']">
+    </div>
+    <div class="mb-3">
+        <label for="tipoCuenta" class="form-label">Tipo de cuenta</label>
+        <!-- <p>El tipo de cuenta nos ayudará a configurar tu interfaz y habilitar funciones según tu tipo de cuenta.</p> -->
+        <select required id="tipoCuenta" class="form-select" aria-label="Default select example" name="tipo" [formControl]="myForm.controls['tipo']">
+            <option value="1">Estudiante</option>
+            <option value="2">Profesor</option>
+        </select>
+    </div>
+
+    
+    <div>
+        <label>¿Ya tienes una cuenta? <a href="#" [routerLink]="'/login'">Inicia sesión!</a></label>
+    </div>
+    <button type="submit" class="btn btn-primary">¡HECHO! ¡VAMOS A CLASES!</button>
+</form>

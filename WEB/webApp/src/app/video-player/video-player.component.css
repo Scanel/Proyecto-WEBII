@@ -6,13 +6,14 @@ video{
 }
 
 .wrapper-video{
+    width: 100%;
     position: relative;
 }
 
 .label-name{
     position: absolute;
-    bottom: 0;
-    margin: .55rem, .15rem;
+    bottom: 7px;
+    /* margin: .55rem, .15rem; */
     background-color: rgb(19, 19, 19);
     padding: .25rem;
     color: white;

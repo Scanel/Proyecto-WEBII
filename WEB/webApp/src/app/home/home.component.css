@@ -1,0 +1,31 @@
+nav{
+    border-bottom: 1px solid gray;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav img{
+    width: 5%;
+}
+
+nav div {
+    width: 95%;
+    display: flex;
+    justify-content: right;
+}
+
+.contenedorClases{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+a{
+    cursor: pointer;
+}
+
+app-personalizar-avatar{
+    margin: 10px;
+}

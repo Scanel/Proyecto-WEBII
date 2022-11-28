@@ -1,0 +1,89 @@
+<h1>Cambia tu estilo</h1>
+<form>
+   <div class="form">
+        <div class="avatar">
+            <img src="../../assets/Avatar/Masculino/body/BodyM01.png" alt="">
+            <img [src]="avatar.urlHair" alt="">
+            <img [src]="avatar.urlEyes" alt="">
+            <img [src]="avatar.urlBody" alt="">
+            <img [src]="avatar.urlLegs" alt="">
+        </div>
+        <div class="ajusteAvatar">
+            <h2>Cabello</h2>
+            <div class="conjunto">
+                <div >
+                    <h2 class="selectStyle" (click)="Disminuir('styleHair')"><</h2>
+                </div>
+                <div>
+                    <input type="text" readonly value="{{ styleHair }}">
+                </div>
+                <div>
+                    <h2 class="selectStyle" (click)="Aumentar('styleHair')">></h2>
+                </div>
+            </div>
+            <h2>Color de cabello</h2>
+            <div class="conjunto">
+                <div>
+                    <h2 class="selectStyle" (click)="Disminuir('colorHair')"><</h2>
+                </div>
+                <div>
+                    <input type="text" readonly value="{{ colorHair }}">
+                </div>
+                <div>
+                    <h2 class="selectStyle" (click)="Aumentar('colorHair')">></h2>
+                </div>
+            </div>
+            <h2>Color de ojos</h2>
+            <div class="conjunto">
+                <div>
+                    <h2 class="selectStyle" (click)="Disminuir('colorEyes')"><</h2>
+                </div>
+                <div>
+                    <input type="text" readonly value="{{ colorEyes }}">
+                </div>
+                <div>
+                    <h2 class="selectStyle" (click)="Aumentar('colorEyes')">></h2>
+                </div>
+            </div>
+            <h2>Playera</h2>
+            <div class="conjunto">
+                <div>
+                    <h2 class="selectStyle" (click)="Disminuir('styleTShirt')"><</h2>
+                </div>
+                <div>
+                    <input type="text" readonly value="{{ styleTShirt }}">
+                </div>
+                <div>
+                    <h2 class="selectStyle" (click)="Aumentar('styleTShirt')">></h2>
+                </div>
+            </div>
+            <h2>Color de playera</h2>
+            <div class="conjunto">
+                <div>
+                    <h2 class="selectStyle" (click)="Disminuir('colorTShirt')"><</h2>
+                </div>
+                <div>
+                    <input type="text" readonly value="{{ colorTShirt }}">
+                </div>
+                <div>
+                    <h2 class="selectStyle" (click)="Aumentar('colorTShirt')">></h2>
+                </div>
+            </div>
+            <h2>Color de pantalón</h2>
+            <div class="conjunto">
+                <div>
+                    <h2 class="selectStyle" (click)="Disminuir('colorPants')"><</h2>
+                </div>
+                <div>
+                    <input type="text" readonly value="{{ colorPants }}">
+                </div>
+                <div>
+                    <h2 class="selectStyle" (click)="Aumentar('colorPants')">></h2>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="ActualizarAvatar()">GUARDAR CAMBIOS</button>
+</form>
+

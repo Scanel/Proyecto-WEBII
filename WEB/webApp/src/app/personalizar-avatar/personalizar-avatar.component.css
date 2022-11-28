@@ -1,0 +1,45 @@
+:host{
+    color: black;
+}
+h1{
+    text-align: center;
+}
+form{
+    width: 50%;
+    margin: auto;
+    
+}
+.form{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.form input{
+    width: 30px;
+    text-align: center;
+}
+.avatar{
+    position: relative;
+    width: 512px;
+    height: 512px;
+    margin: 10px;
+}
+.avatar img{
+    position: absolute;
+    width: 100%;
+}
+
+.conjunto{
+    display: flex;
+}
+
+.conjunto div{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.selectStyle:hover{
+    cursor: pointer;
+}

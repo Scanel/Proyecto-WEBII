@@ -18,18 +18,42 @@
     background: url("../../assets/Salon/Suelo2.png");
     background-repeat: no-repeat;
     width: 70%;
-    background-color: blue;
+    height: 100vh;
     padding: 50px;
 }
 .contenedor-video{
     display: flex;
-    flex-direction: column;
-    height: 80vh;
-    background-color: white;
+    height: 70vh;
+    flex-direction: row;
     background-size: cover;
     overflow-y: scroll;
     width: 30%;
+    flex-wrap: wrap;
 }
+.chat-contenedor{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    width: 30%;
+}
+.chat-cont{
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+}
+.caja-chat{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.mensaje{
+    background-color: rgb(53, 53, 53);
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
 app-video-player{
-    padding: 0.5rem;
+    width: 50%;
 }

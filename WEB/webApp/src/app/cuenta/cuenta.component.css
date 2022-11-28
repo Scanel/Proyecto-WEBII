@@ -1,0 +1,9 @@
+form{
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+form h1{
+    text-align: center;
+    margin-bottom: 30px;
+}

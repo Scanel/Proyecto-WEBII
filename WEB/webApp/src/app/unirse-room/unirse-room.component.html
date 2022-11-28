@@ -1,0 +1,9 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <h1 class="title">Únete a una sala</h1>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Código de la sala:</label>
+      <!-- <p>Necesitarás usar este email para conectarte a la plataforma. Por favor, utiliza un email que sea válido.</p> -->
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" [formControl]="myForm.controls['codigo']">
+    </div>
+    <button type="submit" class="btn btn-primary">UNIRSE A CLASE</button>
+</form>

@@ -1,0 +1,25 @@
+:host{
+    background-color: rgb(228, 228, 228);
+}
+form{
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title{
+    color: black;
+    text-align: center;
+}
+
+img{
+    width: 20%;
+    display: block;
+    margin: auto;
+}

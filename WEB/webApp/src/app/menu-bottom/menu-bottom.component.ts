@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,8 +9,12 @@ import { Router } from '@angular/router';
 export class MenuBottomComponent implements OnInit {
 
   @Input() stream: any;
+  @Output() setChat = new EventEmitter<boolean>();
   videoOn: boolean = true;
   audioOn: boolean = false;
+  chatOn: boolean = false;
+
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -40,6 +44,11 @@ export class MenuBottomComponent implements OnInit {
       }
       console.log(track);
     })
+  }
+
+  SetChat = () => {
+    this.chatOn = !this.chatOn;
+    this.setChat.emit(this.chatOn);
   }
 
   Disconnect = () =>{

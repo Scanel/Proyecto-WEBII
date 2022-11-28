@@ -9,8 +9,20 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { MenuBottomComponent } from './menu-bottom/menu-bottom.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { AvatarComponent } from './avatar/avatar.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { PersonalizarAvatarComponent } from './personalizar-avatar/personalizar-avatar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { CartaClaseComponent } from './carta-clase/carta-clase.component';
+import { CrearRoomComponent } from './crear-room/crear-room.component';
+import { UnirseRoomComponent } from './unirse-room/unirse-room.component';
+import { ChatComponent } from './chat/chat.component';
+import { CuentaComponent } from './cuenta/cuenta.component';
 
-const config: SocketIoConfig = {url: 'http://localhost:3000', options: {withCredentials: false}};
+const config: SocketIoConfig = {url: 'http://localhost:3002', options: {withCredentials: false}};
 
 @NgModule({
   declarations: [
@@ -19,12 +31,25 @@ const config: SocketIoConfig = {url: 'http://localhost:3000', options: {withCred
     RoomComponent,
     VideoPlayerComponent,
     MenuBottomComponent,
-    AvatarComponent
+    AvatarComponent,
+    LoginComponent,
+    RegistroComponent,
+    PersonalizarAvatarComponent,
+    CartaClaseComponent,
+    CrearRoomComponent,
+    UnirseRoomComponent,
+    ChatComponent,
+    CuentaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

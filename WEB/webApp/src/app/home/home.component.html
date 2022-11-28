@@ -1,34 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">VIDEOCHAT</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<nav class="nav">
+  <img src="../../assets/img/conocimiento.png" alt="">
+  <div>
+    <a class="nav-link active" aria-current="page" (click)="ActivarVista(0)">Mis clases</a>
+    <a *ngIf="datos.idRol === 2" class="nav-link active" aria-current="page"  (click)="ActivarVista(1)">Crear Clase</a>
+    <a class="nav-link active" aria-current="page"  (click)="ActivarVista(2)">Unirse a Clase</a>
+    <a class="nav-link"  (click)="ActivarVista(3)">Avatar</a>
+    <a class="nav-link"  (click)="ActivarVista(4)">{{ datos.name }}</a>
+    <button type="button" class="btn btn-primary" (click)="LogOut()">Salir</button>
+  </div>
+</nav>
 
-<div class="container">
-    <div class="row my-5">
-        <div class="col">
-            <div class="d-grid gap-2">
-                <button class="btn btn-primary btn-lg" (click)="goToRoom()">Join</button>
-            </div>
-        </div>
-    </div>
+<div class="contenedorClases" *ngIf="vistas[0]">
+  <app-carta-clase [sala]="sala" *ngFor="let sala of salas" ></app-carta-clase>
 </div>
+
+<app-crear-room *ngIf="vistas[1]"></app-crear-room>
+
+<app-unirse-room *ngIf="vistas[2]"></app-unirse-room>
+
+<app-personalizar-avatar *ngIf="vistas[3]"></app-personalizar-avatar>
+
+<app-cuenta *ngIf="vistas[4]"></app-cuenta>

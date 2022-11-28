@@ -1,0 +1,50 @@
+:host{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    padding: 10%;
+}
+
+form{
+    width: 50%;
+    margin-top: 0px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-right: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title{
+    color: black;
+    text-align: center;
+}
+
+img{
+    width: 20%;
+    display: block;
+    margin: auto;
+}
+
+/* .p_avatar{
+    width: 60%;
+    margin-top: 50px;
+    background-color: rgb(34, 34, 145);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+.p_avatar h1{
+    text-align: center;
+    color: white;
+}
+
+app-personalizar-avatar{
+    
+} */

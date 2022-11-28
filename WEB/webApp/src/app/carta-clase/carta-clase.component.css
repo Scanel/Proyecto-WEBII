@@ -1,0 +1,19 @@
+.card{
+    cursor: pointer;
+    border: 1px solid gray;
+    margin: 10px;
+}
+.card:hover{
+    background-color: rgb(211, 211, 211);
+}
+
+.imagen{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.imagen img{
+    width: 50%;
+}
