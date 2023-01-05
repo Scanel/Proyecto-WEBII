@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -12,29 +12,53 @@ import { WebSocketService } from '../web-socket.service';
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.css']
 })
-export class RoomComponent implements OnInit {
+export class RoomComponent implements OnInit, OnDestroy {
+
   roomName: any;
+
   currentStream:any;
+
   currentAvatar:any;
 
   listUserAvatar:Array<any> = [];
+
   listUser:Array<any> = [];
+
   listMensaje: Array<any> = [];
+
+  listTareas: Array<any> = [];
+
+  listRespuestas: Array<any> = [];
+
   peer: PeerService;
+
   datos:any;
+
   resultados:any;
 
   chat:boolean = false;
+
+  tareas:boolean = false;
+
   myForm: any;
+
+  myForm2: any;
+
   avatar: Avatar;
 
   chatCaja: AbstractControl;
+
+  respuesta: AbstractControl;
 
   constructor(fb:FormBuilder, private toastr: ToastrService,private AvatarService: AvatarService, private router:Router, private route:ActivatedRoute, private webSocketService:WebSocketService, private peerService:PeerService) {
     this.roomName = route.snapshot.paramMap.get('id');
     this.myForm = fb.group({
       'chatCaja': ['', Validators.required],
     });
+    this.myForm2 = fb.group({
+      'respuesta': ['', Validators.required]
+    });
+    this.respuesta = this.myForm2.controls['respuesta'];
     this.chatCaja = this.myForm.controls['chatCaja'];
     this.peer = peerService;
     this.avatar = new Avatar();
@@ -53,6 +77,9 @@ export class RoomComponent implements OnInit {
     }
     
   }
+  ngOnDestroy(): void {
+      console.log("Destruir");
+  }
 
   initPeer = () =>{
     // const peer = this.peerService.peer;
@@ -65,16 +92,12 @@ export class RoomComponent implements OnInit {
         nombre: this.datos.name,
         avatar: this.avatar
       }
-      console.log("PEER conectado");
-      console.log("BODY: ",body);
+
       this.webSocketService.joinRoom(body);
-      this.webSocketService.SendMessage({"message": "Hola"})
 
       this.peer.peer.on('call', (callEnter:any) => {
-        console.log("Nueva llamada");
         callEnter.answer(this.currentStream);
         callEnter.on('stream', (streamRemote:any) => {
-          console.log("Stream remoto: ",streamRemote);
           this.addVideoUser(streamRemote);
         })
       }, (err:any) => {
@@ -88,7 +111,6 @@ export class RoomComponent implements OnInit {
       if(res.name === 'new-user'){
         this.toastr.show(res.data.nombre + " se ha conectado");
         const idPeer = res.data.idPeer;
-        console.log(res.data.avatar);
         this.addAvatarUser(res.data.avatar);
         const body = {
           total:this.listUserAvatar.length,
@@ -111,8 +133,16 @@ export class RoomComponent implements OnInit {
         if(res.data.total > this.listUserAvatar.length){
           this.addAvatarUser(res.data.avatar);
         }
+      }else if(res.name === 'tarea-user'){
+        this.toastr.warning("Tienes una nueva actividad");
+        this.addTareas(res.data);
+        console.log(this.listTareas[0].titulo);
+      }else if(res.name === 'respuesta-user'){
+        console.log("hay respuestaaaaaaa");
+        console.log(res.data);
+        this.toastr.info(res.data.nombre + " ha contestado la actividad");
+        this.addRespuesta(res.data);
       }
-      console.log("SOCKET", res);
     })
   }
 
@@ -141,19 +171,19 @@ export class RoomComponent implements OnInit {
 
   addVideoUser=(stream:any) =>{
     this.listUser.push(stream);
-    console.log(this.listUser);
   }
 
   addAvatarUser(avatar:any){
     this.listUserAvatar.push(avatar);
   }
 
+  addTareas(tarea:any){
+    this.listTareas.push(tarea);
+  }
+
   sendCall = (idPeer:any, stream:any) => {
     const newUserCall = this.peerService.peer.call(idPeer, stream);
-    console.log("Usuario: ", idPeer);
-    console.log("Stream: ",stream);
     newUserCall.on('stream', (userStream: any) => {
-      console.log("Usuario stream: ",userStream);
       this.addVideoUser(userStream);
     })
   }
@@ -180,6 +210,12 @@ export class RoomComponent implements OnInit {
 
   SetChat(chat: boolean){
     this.chat = chat;
+    this.tareas = false;
+  }
+
+  SetTareas(tareas: boolean){
+    this.tareas = tareas;
+    this.chat = false;
   }
 
   onSubmit(form: any){
@@ -190,10 +226,31 @@ export class RoomComponent implements OnInit {
     }
     this.addMensaje(body);
     this.webSocketService.SendMessage(body);
+    this.LimpiarInputs();
+  }
+
+  onSubmit2(form: any){
+    this.respuesta = this.myForm2.controls['respuesta'];
+    const body = {
+      nombre: this.datos.name,
+      respuesta: this.respuesta.value
+    }
+    this.addRespuesta(body);
+    this.webSocketService.SendRespuesta(body);
+
+    this.toastr.success("Enviaste la respuesta");
 
   }
 
+  LimpiarInputs(): void{
+    this.myForm.patchValue({
+      'chatCaja': ''
+    });
+  }
   addMensaje(msj: any){
     this.listMensaje.push(msj);
+  }
+  addRespuesta(res: any){
+    this.listRespuestas.push(res);
   }
 }

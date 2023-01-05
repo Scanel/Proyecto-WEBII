@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RoomUser } from '../modelos/roomuser.model';
+import { EventosService } from '../servicios/eventos.service';
 import { RoomuserService } from '../servicios/roomuser.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class UnirseRoomComponent implements OnInit {
   iduser: number;
   resultados: any;
   
-  constructor(fb: FormBuilder, private RoomuserService: RoomuserService, private router: Router, private toastr: ToastrService) {
+  constructor(fb: FormBuilder, private RoomuserService: RoomuserService, private router: Router, private toastr: ToastrService, private eventos: EventosService) {
     this.roomuser = new RoomUser();
     this.iduser = 0;
     this.myForm = fb.group({
@@ -51,10 +52,20 @@ export class UnirseRoomComponent implements OnInit {
       this.resultados = data;
       if(this.resultados.status){
         this.toastr.success(this.resultados.message);
+        this.LimpiarInputs();
+        this.eventos.evento.emit({
+          data:true
+        });
       }else{
         this.toastr.error(this.resultados.message);
       }
     })
+  }
+
+  LimpiarInputs(): void{
+    this.myForm.patchValue({
+      'codigo': ''
+    });
   }
 
 }

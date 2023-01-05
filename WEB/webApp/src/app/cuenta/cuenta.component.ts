@@ -19,7 +19,10 @@ export class CuentaComponent implements OnInit {
   apellido2:AbstractControl;
   datos: any;
   resultados:any;
-  resultados2:any;
+  s_Email: string;
+  s_Nombre: string;
+  s_Apellido1: string;
+  s_Apellido2: string;
   usuario: User;
 
   constructor(fb:FormBuilder, private toastr: ToastrService, private UsuariosService: UsuariosService, private router: Router) { 
@@ -30,6 +33,10 @@ export class CuentaComponent implements OnInit {
       'apellido1': ['', Validators.required],
       'apellido2': ['']
     });
+    this.s_Email = "";
+    this.s_Nombre = "";
+    this.s_Apellido1 = "";
+    this.s_Apellido2 = "";
     this.email = this.myForm.controls['email'];
     this.nombre = this.myForm.controls['nombre'];
     this.apellido1 = this.myForm.controls['apellido1'];
@@ -64,10 +71,13 @@ export class CuentaComponent implements OnInit {
   ConsultarUsuario(){
     this.UsuariosService.ConsultarUsuario(this.datos.iduser).subscribe(data => {
       this.resultados = data;
-      this.resultados2 = this.resultados.data[0];
-      console.log(this.resultados2);
+      console.log(this.resultados.data[0]);
       if(this.resultados.status){
-        this.toastr.success(this.resultados.message);
+        this.s_Email = this.resultados.data[0].Email;
+        this.s_Nombre = this.resultados.data[0].name;
+        this.s_Apellido1 = this.resultados.data[0].Apellido1;
+        this.s_Apellido2 = this.resultados.data[0].Apellido2;
+        //this.toastr.success(this.resultados.message);
       }else{
         this.toastr.error(this.resultados.message);
       }

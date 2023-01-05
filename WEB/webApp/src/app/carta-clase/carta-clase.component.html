@@ -1,4 +1,5 @@
-<div class="card" style="width: 18rem;" (click)="goToRoom(sala.idroom)">
+
+<div class="card" style="width: 18rem;">
     <div class="imagen">
         <img [src]="sala.urlbanner" class="card-img-top" alt="...">
     </div>
@@ -6,6 +7,7 @@
     <div class="card-body">
         <p class="card-text">Código: {{ sala.idroom }}</p>
         <p class="card-text">{{ sala.name }}</p>
-        <p class="card-text">Mestro(a): {{ nombre }}</p>
+        <p class="card-text">Maestro(a): {{ nombre }}</p>
+        <a href="" [target]="'_blank'" [routerLink]="'/room/' + sala.idroom">Entrar</a>
     </div>
 </div>

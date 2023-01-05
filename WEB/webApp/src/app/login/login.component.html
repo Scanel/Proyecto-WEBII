@@ -12,5 +12,5 @@
     <div>
         <label>¿Aún no tienes una cuenta? <a href="#" [routerLink]="'/registro'">Haz una!</a></label>
     </div>
-    <button type="submit" class="btn btn-primary">ENTRAR!</button>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">ENTRAR!</button>
 </form>

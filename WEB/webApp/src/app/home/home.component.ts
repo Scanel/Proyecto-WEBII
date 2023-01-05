@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventosService } from '../servicios/eventos.service';
 import { RoomService } from '../servicios/room.service';
 import { RoomuserService } from '../servicios/roomuser.service';
 
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   resultados: any;
 
-  constructor(private router: Router, private RoomuserService: RoomuserService, private RoomService: RoomService) {
+  constructor(private router: Router, private RoomuserService: RoomuserService, private RoomService: RoomService, private eventos:EventosService) {
     this.vistas = [true,false,false,false,false];
   }
 
@@ -29,6 +30,11 @@ export class HomeComponent implements OnInit {
       console.log(this.datos);
       this.ConsultarRoomUser();
     }
+
+    this.eventos.evento.subscribe(data => {
+      this.salas = new Array<any>();
+      this.ConsultarRoomUser();
+    });
     
   }
 

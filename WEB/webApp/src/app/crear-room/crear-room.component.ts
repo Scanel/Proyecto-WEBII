@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Room } from '../modelos/room.model';
 import { RoomUser } from '../modelos/roomuser.model';
+import { EventosService } from '../servicios/eventos.service';
 import { RoomService } from '../servicios/room.service';
 import { RoomuserService } from '../servicios/roomuser.service';
 
@@ -23,7 +24,7 @@ export class CrearRoomComponent implements OnInit {
   datos: any;
   resultado:any;
 
-  constructor(fb: FormBuilder, private router: Router, private RoomService: RoomService, private toastr: ToastrService, private RoomUserService: RoomuserService) { 
+  constructor(fb: FormBuilder, private router: Router, private RoomService: RoomService, private toastr: ToastrService, private RoomUserService: RoomuserService, private eventos:EventosService) { 
     this.room = new Room();
     this.roomuser = new RoomUser();
     this.myForm = fb.group({
@@ -115,10 +116,21 @@ export class CrearRoomComponent implements OnInit {
       this.resultado = data;
       if(this.resultado.status){
         this.toastr.success(this.resultado.message);
+        this.LimpiarInputs();
+        this.eventos.evento.emit({
+          data:true
+        })
       }else{
         this.toastr.error(this.resultado.meesage);
       }
     })
+  }
+
+  LimpiarInputs(): void{
+    this.myForm.patchValue({
+      'name': '',
+      'materia': ''
+    });
   }
 
 }

@@ -3,19 +3,19 @@
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email</label>
       <!-- <p>Necesitarás usar este email para conectarte a la plataforma. Por favor, utiliza un email que sea válido.</p> -->
-      <input readonly [value]="this.resultados2.Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [formControl]="myForm.controls['email']">
+      <input readonly [value]="s_Email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [formControl]="myForm.controls['email']">
     </div>
     <div class="mb-3">
         <label for="txtNombre" class="form-label">Nombre</label>
-        <input [value]="this.resultados2.name" required type="text" class="form-control" id="txtNombre" name="nombre" [formControl]="myForm.controls['nombre']">
+        <input  required [value]="s_Nombre" type="text" class="form-control" id="txtNombre" name="nombre" [formControl]="myForm.controls['nombre']">
     </div>
     <div class="mb-3">
         <label for="txtApellido1" class="form-label">Apellido 1</label>
-        <input [value]="this.resultados2.Apellido1" required type="text" class="form-control" id="txtApellido1" name="apellido1" [formControl]="myForm.controls['apellido1']">
+        <input  required [value]="s_Apellido1" type="text" class="form-control" id="txtApellido1" name="apellido1" [formControl]="myForm.controls['apellido1']">
     </div>
     <div class="mb-3">
         <label for="txtApellido2" class="form-label">Apellido 2</label>
-        <input [value]="this.resultados2.Apellido2" type="text" class="form-control" id="txtApellido2" name="apellido2" [formControl]="myForm.controls['apellido2']">
+        <input [value]="s_Apellido2" type="text" class="form-control" id="txtApellido2" name="apellido2" [formControl]="myForm.controls['apellido2']">
     </div>
 
     <button type="submit" class="btn btn-primary">GUARDAR CAMBIOS</button>

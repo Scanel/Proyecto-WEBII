@@ -11,6 +11,9 @@
         <i class="fa-sharp fa-solid fa-file-video fa-3x" *ngIf="chatOn" (click)="SetChat()"></i>
         <i class="fa-solid fa-comments fa-3x" *ngIf="!chatOn" (click)="SetChat()"></i>
     </div>
+    <div class="item" *ngIf="idrol === 2">
+        <i class="fa-solid fa-file-signature fa-3x" (click)="SetTareas()"></i>
+    </div>
     <div class="item">
         <i class="fa-solid fa-phone-slash fa-3x" (click)="Disconnect()"></i>
     </div>

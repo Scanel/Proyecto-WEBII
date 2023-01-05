@@ -8,7 +8,7 @@ import { ResultadoUser, User } from '../modelos/user.model';
 })
 export class UsuariosService {
 
-  urlBase: string = "https://api-videochat402.herokuapp.com/";
+  urlBase: string = "http://localhost:3000/";
 
   constructor(private http: HttpClient) { }
 

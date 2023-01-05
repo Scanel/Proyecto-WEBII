@@ -29,6 +29,15 @@ io.on('connection', (socket) => {
         socket.on('avatar', (data) => {
             socket.to(roomName).emit('avatar-user', data);
         })
+
+        socket.on('tarea', (data) =>{
+            socket.to(roomName).emit('tarea-user', data);
+        })
+
+        socket.on('respuesta', (data) => {
+            socket.to(roomName).emit('respuesta-user', data);
+        })
+
         console.log("Usuario conectado", data);
     })
 })

@@ -9,15 +9,18 @@ import { Router } from '@angular/router';
 export class MenuBottomComponent implements OnInit {
 
   @Input() stream: any;
+  @Input() idrol: any;
   @Output() setChat = new EventEmitter<boolean>();
+  @Output() setTareas = new EventEmitter<boolean>();
   videoOn: boolean = true;
   audioOn: boolean = false;
   chatOn: boolean = false;
-
+  tareasOn: boolean = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.idrol);
   }
 
   SetVideo = () =>{
@@ -49,6 +52,11 @@ export class MenuBottomComponent implements OnInit {
   SetChat = () => {
     this.chatOn = !this.chatOn;
     this.setChat.emit(this.chatOn);
+  }
+
+  SetTareas = () => {
+    this.tareasOn = !this.tareasOn;
+    this.setTareas.emit(this.tareasOn);
   }
 
   Disconnect = () =>{

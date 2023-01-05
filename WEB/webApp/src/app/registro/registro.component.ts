@@ -30,9 +30,9 @@ export class RegistroComponent implements OnInit {
     this.usuario = new User();
     this.avatar = new Avatar();
     this.myForm = fb.group({
-      'email': ['', Validators.required],
-      'password1': ['', Validators.required],
-      'password2': ['', Validators.required],
+      'email': ['', [Validators.required, Validators.pattern("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")]],
+      'password1': ['', [Validators.required, Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,16}$')]],
+      'password2': ['', [Validators.required, Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,16}$')]],
       'nombre': ['', Validators.required],
       'apellido1': ['', Validators.required],
       'apellido2': [''],
@@ -73,12 +73,12 @@ export class RegistroComponent implements OnInit {
     this.usuario.idRol = this.tipo.value;
     this.usuario.idavatar = 1;
 
-    console.log(this.usuario.Email);
     if(this.password1.value === this.password2.value){
       this.GuardarUsuario();
     }else{
       this.toastr.error("Las contraseñas no coinciden");
     }
+
   }
 
   GuardarUsuario(){
@@ -105,9 +105,22 @@ export class RegistroComponent implements OnInit {
       this.resultado = data;
       if(this.resultado.status){
         this.toastr.success(this.resultado.message);
+        this.LimpiarInputs();
       }else{
         this.toastr.error(this.resultado.message);
       }
     })
+  }
+
+  LimpiarInputs(): void{
+    this.myForm.patchValue({
+      'email': '',
+      'password1': '',
+      'password2': '',
+      'nombre': '',
+      'apellido1': '',
+      'apellido2': '',
+      'tipo': ''
+    });
   }
 }

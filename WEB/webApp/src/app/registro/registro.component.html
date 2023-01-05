@@ -5,23 +5,32 @@
       <label for="exampleInputEmail1" class="form-label">Email</label>
       <!-- <p>Necesitarás usar este email para conectarte a la plataforma. Por favor, utiliza un email que sea válido.</p> -->
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [formControl]="myForm.controls['email']">
+      <div class="alert alert-danger" *ngIf="myForm.get('email')?.touched && myForm.get('email')?.errors?.['required']">Este campo es requerido</div>
+      <div class="alert alert-danger" *ngIf="myForm.get('email')?.touched && myForm.get('email')?.errors?.['pattern']">Correo inválido</div>
     </div>
+    
     <div class="mb-3">
       <label for="txtPassword1" class="form-label">Contraseña</label>
       <!-- <p>Usa al menos 6 caracteres. Incluye al menos una letra y un número o un caracter especial.</p> -->
       <input required type="password" class="form-control" id="txtPassword1" name="password1" [formControl]="myForm.controls['password1']">
+      <div class="alert alert-danger" *ngIf="myForm.get('password1')?.touched && myForm.get('password1')?.errors?.['required']">Este campo es requerido.</div>
+      <div class="alert alert-danger" *ngIf="myForm.get('password1')?.touched && myForm.get('password1')?.errors?.['pattern']">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.</div>
     </div>
     <div class="mb-3">
         <label for="txtPassword2" class="form-label">Repite contraseña</label>
         <input required type="password" class="form-control" id="txtPassword2" name="password2" [formControl]="myForm.controls['password2']">
+        <div class="alert alert-danger" *ngIf="myForm.get('password2')?.touched && myForm.get('password2')?.errors?.['required']">Este campo es requerido.</div>
+        <div class="alert alert-danger" *ngIf="myForm.get('password2')?.touched && myForm.get('password2')?.errors?.['pattern']">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.</div>
     </div>
     <div class="mb-3">
         <label for="txtNombre" class="form-label">Nombre</label>
         <input required type="text" class="form-control" id="txtNombre" name="nombre" [formControl]="myForm.controls['nombre']">
+        <div class="alert alert-danger" *ngIf="myForm.get('nombre')?.touched && myForm.get('nombre')?.errors?.['required']">Este campo es requerido</div>
     </div>
     <div class="mb-3">
         <label for="txtApellido1" class="form-label">Apellido 1</label>
         <input required type="text" class="form-control" id="txtApellido1" name="apellido1" [formControl]="myForm.controls['apellido1']">
+        <div class="alert alert-danger" *ngIf="myForm.get('apellido1')?.touched && myForm.get('apellido1')?.errors?.['required']">This field is required</div>
     </div>
     <div class="mb-3">
         <label for="txtApellido2" class="form-label">Apellido 2</label>
@@ -34,11 +43,12 @@
             <option value="1">Estudiante</option>
             <option value="2">Profesor</option>
         </select>
+        <div class="alert alert-danger" *ngIf="myForm.get('tipo')?.touched && myForm.get('tipo')?.errors?.['required']">Este campo es requerido</div>
     </div>
 
     
     <div>
         <label>¿Ya tienes una cuenta? <a href="#" [routerLink]="'/login'">Inicia sesión!</a></label>
     </div>
-    <button type="submit" class="btn btn-primary">¡HECHO! ¡VAMOS A CLASES!</button>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">¡HECHO! ¡VAMOS A CLASES!</button>
 </form>

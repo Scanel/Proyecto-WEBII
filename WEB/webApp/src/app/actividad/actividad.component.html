@@ -1,0 +1,27 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" [formControl]="myForm.controls['titulo']">
+      </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <input type="text" class="form-control" id="descripcion" name="descripcion" [formControl]="myForm.controls['descripcion']">
+    </div>
+    <div class="mb-3">
+      <label for="r1" class="form-label">Respuesta A</label>
+      <input type="text" class="form-control" id="r1" name="r1" [formControl]="myForm.controls['r1']">
+    </div>
+    <div class="mb-3">
+        <label for="r2" class="form-label">Respuesta B</label>
+        <input type="text" class="form-control" id="r2" name="r2" [formControl]="myForm.controls['r2']">
+      </div>
+      <div class="mb-3">
+        <label for="r3" class="form-label">Respuesta C</label>
+        <input type="text" class="form-control" id="r3" name="r3" [formControl]="myForm.controls['r3']">
+      </div>
+      <div class="mb-3">
+        <label for="r4" class="form-label">Respuesta D</label>
+        <input type="text" class="form-control" id="r4" name="r4" [formControl]="myForm.controls['r4']">
+      </div>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">AGREGAR ACTIVIDAD</button>
+</form>

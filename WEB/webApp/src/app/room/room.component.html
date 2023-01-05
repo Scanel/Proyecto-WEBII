@@ -2,20 +2,44 @@
     <div class="contenedor-avatar">
         <app-avatar [avatar]="avatar" *ngFor="let avatar of listUserAvatar"></app-avatar>
     </div>
-    <div class="chat-contenedor" *ngIf="chat">
+    <div class="chat-contenedor" *ngIf="chat && !tareas">
         <div class="chat-cont" >
+            
+            <div class="tarea" *ngFor="let t of listTareas">
+                <form [formGroup]="myForm2" (ngSubmit)="onSubmit2(myForm2.value)">
+                    <p>Titulo: {{ t.titulo }}</p>
+                    <p>Descripción: {{ t.descripcion }}</p>
+                    <label for="tipoCuenta" class="form-label">Respuesta:</label>
+                    <select required id="tipoCuenta" class="form-select" aria-label="Default select example" name="respuesta" [formControl]="myForm2.controls['respuesta']">
+                        <option value="A">A) {{t.r1}}</option>
+                        <option value="B">B) {{t.r2}}</option>
+                        <option value="C">C) {{t.r3}}</option>
+                        <option value="D">D) {{t.r4}}</option>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary" [disabled]="myForm2.invalid">ENVIAR RESPUESTA</button>
+                </form>
+            </div>
+            <div class="resp" *ngFor="let r of listRespuestas">
+                <p>Nombre: {{ r.nombre }}</p>
+                <p>Respuesta: {{ r.respuesta }}</p>
+            </div>
             <div class="mensaje" *ngFor="let msj of listMensaje">
                 <p>{{ msj.nombre }}:</p>
                 <p>{{ msj.mensaje }}</p>
             </div>
+            
         </div>
         <form  class="caja-chat" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <input type="text" name="chatCaja" [formControl]="myForm.controls['chatCaja']">
-            <button type="submit" class="btn btn-primary">ENVIAR</button>
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">ENVIAR</button>
         </form>
     </div>
-    <div class="contenedor-video" *ngIf="!chat">
+    <div class="contenedor-video" *ngIf="!chat && !tareas">
         <app-video-player  [stream]="user" *ngFor="let user of listUser"></app-video-player>
     </div>
+    <div class="tareas-profesor" *ngIf="tareas && !chat">
+        <app-actividad></app-actividad>
+    </div>
 </div>
-<app-menu-bottom (setChat)="SetChat($event)" [stream]="listUser[0]"></app-menu-bottom>
+<app-menu-bottom (setTareas)="SetTareas($event)" (setChat)="SetChat($event)" [idrol]="datos.idRol" [stream]="listUser[0]"></app-menu-bottom>

@@ -21,8 +21,12 @@ import { CrearRoomComponent } from './crear-room/crear-room.component';
 import { UnirseRoomComponent } from './unirse-room/unirse-room.component';
 import { ChatComponent } from './chat/chat.component';
 import { CuentaComponent } from './cuenta/cuenta.component';
+import { RoomComponenteComponent } from './room-componente/room-componente.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ActividadComponent } from './actividad/actividad.component';
 
-const config: SocketIoConfig = {url: 'https://my-virtualchat.herokuapp.com/', options: {withCredentials: false}};
+
+const config: SocketIoConfig = {url: 'http://localhost:3002/', options: {withCredentials: false}};
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ const config: SocketIoConfig = {url: 'https://my-virtualchat.herokuapp.com/', op
     CrearRoomComponent,
     UnirseRoomComponent,
     ChatComponent,
-    CuentaComponent
+    CuentaComponent,
+    RoomComponenteComponent,
+    ActividadComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,7 @@ const config: SocketIoConfig = {url: 'https://my-virtualchat.herokuapp.com/', op
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
