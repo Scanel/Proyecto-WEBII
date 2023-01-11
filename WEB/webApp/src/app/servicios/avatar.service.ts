@@ -8,7 +8,7 @@ import { Avatar, ResultadoAvatar } from '../modelos/avatar.model';
 })
 export class AvatarService {
 
-  urlBase: string = "http://localhost:3000/";
+  urlBase: string = "https://backendweb-production.up.railway.app/";
 
   constructor(private http: HttpClient) { }
 

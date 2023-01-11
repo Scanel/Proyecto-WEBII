@@ -8,7 +8,7 @@ import { ResultadoRoom, Room } from '../modelos/room.model';
 })
 export class RoomService {
 
-  urlBase: string = "http://localhost:3000/";
+  urlBase: string = "https://backendweb-production.up.railway.app/";
 
   constructor(private http: HttpClient) { }
 

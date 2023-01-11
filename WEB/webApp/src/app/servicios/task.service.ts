@@ -8,7 +8,7 @@ import { ResultadoTask, Task } from '../modelos/task.model';
 })
 export class TaskService {
 
-  urlBase: string = "http://localhost:3000/";
+  urlBase: string = "https://backendweb-production.up.railway.app/";
 
   constructor(private http: HttpClient) { }
 

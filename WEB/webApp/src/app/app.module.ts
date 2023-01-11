@@ -26,7 +26,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ActividadComponent } from './actividad/actividad.component';
 
 
-const config: SocketIoConfig = {url: 'http://localhost:3002/', options: {withCredentials: false}};
+const config: SocketIoConfig = {url: 'https://server-sockets-production.up.railway.app/', options: {withCredentials: false}};
 
 @NgModule({
   declarations: [
